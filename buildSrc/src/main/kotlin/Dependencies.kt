@@ -34,10 +34,8 @@ object AndroidX {
 
         const val foundation = "androidx.compose.foundation:foundation:$version"
         const val layout = "androidx.compose.foundation:foundation-layout:$version"
-        const val material = "androidx.compose.material:material:$version"
         const val materialIconsExtended = "androidx.compose.material:material-icons-extended:$version"
         const val runtime = "androidx.compose.runtime:runtime:$version"
-        const val runtimeLivedata = "androidx.compose.runtime:runtime-livedata:$version"
         const val tooling = "androidx.compose.ui:ui-tooling:$version"
         const val toolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
         const val test = "androidx.compose.ui:ui-test:$version"
@@ -85,4 +83,12 @@ object Kotlin {
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
     }
+}
+
+object DI {
+
+    private const val version = "2.43.2"
+
+    const val dagger = "com.google.dagger:dagger:$version"
+    const val kapt = "com.google.dagger:dagger-compiler:$version"
 }

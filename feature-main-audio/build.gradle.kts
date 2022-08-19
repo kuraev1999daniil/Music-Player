@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 
     kotlin("kapt")
@@ -9,11 +9,16 @@ android {
     compileSdk = DefaultConfig.compileSdk
 
     defaultConfig {
-        applicationId = DefaultConfig.applicationId
         minSdk = DefaultConfig.minSdk
         targetSdk = DefaultConfig.targetSdk
-        versionCode = BuildVersion.versionCode
-        versionName = BuildVersion.versionName
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = AndroidX.Compose.kotlinCompilerExtensionVersion
     }
 
     compileOptions {
@@ -26,16 +31,6 @@ android {
     }
 }
 
-kapt {
-    useBuildCache = true
-    correctErrorTypes = true
-}
-
 dependencies {
 
-    implementation(project(":feature-main"))
-    implementation(project(":util-resources"))
-
-    implementation(DI.dagger)
-    kapt(DI.kapt)
 }

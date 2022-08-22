@@ -13,6 +13,14 @@ android {
         targetSdk = DefaultConfig.targetSdk
     }
 
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = AndroidX.Compose.kotlinCompilerExtensionVersion
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -27,4 +35,8 @@ dependencies {
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appcompat)
+
+    implementation(AndroidX.Compose.ui)
+    implementation(AndroidX.Compose.foundation)
+    implementation(AndroidX.Compose.Material3.material3)
 }

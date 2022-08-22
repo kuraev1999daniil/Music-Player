@@ -14,9 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Music-Player"
 include ':app'
-include ':feature-main'
 include ':core-navigation'
 include ':util-resources'
 include ':feature-main-audio'
 include ':feature-main-video'
 include ':feature-main-more'
+include ':base-dagger'

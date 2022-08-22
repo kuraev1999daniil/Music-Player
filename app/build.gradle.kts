@@ -16,6 +16,14 @@ android {
         versionName = BuildVersion.versionName
     }
 
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = AndroidX.Compose.kotlinCompilerExtensionVersion
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -33,9 +41,18 @@ kapt {
 
 dependencies {
 
-    implementation(project(":feature-main"))
+    implementation(project(":base-dagger"))
     implementation(project(":util-resources"))
 
     implementation(DI.dagger)
     kapt(DI.kapt)
+
+    implementation(AndroidX.coreKtx)
+    implementation(AndroidX.appcompat)
+
+    implementation(AndroidX.Compose.ui)
+    implementation(AndroidX.Compose.material)
+    implementation(AndroidX.Navigation.compose)
+    implementation(AndroidX.Activity.activityCompose)
+    implementation(AndroidX.Compose.Material3.material3)
 }

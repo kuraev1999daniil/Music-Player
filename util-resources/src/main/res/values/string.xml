@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Music</string>
+    <string name="app_name">Music Player</string>
+
+    <string name="tab_library_music">Music</string>
+    <string name="tab_library_video">Video</string>
+    <string name="tab_more">More</string>
 </resources>

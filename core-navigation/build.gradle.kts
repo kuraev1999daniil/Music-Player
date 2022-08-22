@@ -13,6 +13,14 @@ android {
         targetSdk = DefaultConfig.targetSdk
     }
 
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = AndroidX.Compose.kotlinCompilerExtensionVersion
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -24,8 +32,6 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":feature-main"))
 
     implementation(AndroidX.Navigation.compose)
 }

@@ -12,7 +12,7 @@ enum class BottomTabs(
     val route: String
 ) {
 
-    MUSIC(R.string.tab_library_music, R.drawable.ic_library_music, "Library Music"),
-    VIDEO(R.string.tab_library_video, R.drawable.ic_library_video, "Library Video"),
-    MORE(R.string.tab_more, R.drawable.ic_more, "Dataset"),
+    MUSIC(R.string.tab_library_music, R.drawable.ic_library_music, "library_music"),
+    VIDEO(R.string.tab_library_video, R.drawable.ic_library_video, "library_video"),
+    MORE(R.string.tab_more, R.drawable.ic_more, "dataset"),
 }

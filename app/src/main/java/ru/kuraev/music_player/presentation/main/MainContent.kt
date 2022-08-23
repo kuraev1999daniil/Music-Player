@@ -1,7 +1,8 @@
 package ru.kuraev.music_player.presentation.main
 
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.LocalContentColor
@@ -19,6 +20,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ru.kuraev.util_resources.JetComposeNavMultiModuleTheme
+import ru.kuraev.util_resources.backgroundMain
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -31,7 +33,10 @@ fun MainContent() {
                 BottomBar(navController = navController, tabs = tabs)
             }
         ) { innerPaddingModifier ->
-
+            AppNavGraph(
+                navController = navController,
+                modifier = Modifier.padding(innerPaddingModifier),
+            )
         }
     }
 }
@@ -43,19 +48,29 @@ fun BottomBar(navController: NavController, tabs: Array<BottomTabs>) {
     val routes = remember { BottomTabs.values().map { it.route } }
     if (currentRoute in routes) {
         BottomNavigation(
-            Modifier.height(56.dp)
+            modifier = Modifier
+                .navigationBarsPadding(),
+            elevation = 0.dp
         ) {
             tabs.forEach { tab ->
                 BottomNavigationItem(
                     icon = { Icon(painterResource(id = tab.icon), contentDescription = null) },
                     selected = currentRoute == tab.route,
                     onClick = {
-
+                        if (tab.route != currentRoute) {
+                            navController.navigate(tab.route) {
+                                popUpTo(navController.graph.startDestinationId) {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        }
                     },
                     alwaysShowLabel = false,
                     selectedContentColor = MaterialTheme.colors.secondary,
                     unselectedContentColor = LocalContentColor.current,
-                    modifier = Modifier.navigationBarsPadding()
+                    modifier = Modifier.background(backgroundMain)
                 )
             }
         }

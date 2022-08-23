@@ -42,7 +42,11 @@ kapt {
 dependencies {
 
     implementation(project(":base-dagger"))
-    implementation(project(":util-resources"))
+    implementation(project(":ui-resources"))
+
+    implementation(project(":feature-main-audio"))
+    implementation(project(":feature-main-video"))
+    implementation(project(":feature-main-more"))
 
     implementation(DI.dagger)
     kapt(DI.kapt)

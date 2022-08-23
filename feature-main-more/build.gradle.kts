@@ -33,4 +33,13 @@ android {
 
 dependencies {
 
+    implementation(project(":ui-resources"))
+
+    implementation(DI.dagger)
+    kapt(DI.kapt)
+
+    implementation(AndroidX.Compose.ui)
+    implementation(AndroidX.Compose.material)
+    implementation(AndroidX.Navigation.compose)
+    implementation(AndroidX.Compose.Material3.material3)
 }

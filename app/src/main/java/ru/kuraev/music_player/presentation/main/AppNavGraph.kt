@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import ru.kuraev.feature_audio.presentation.screen.MainAudioScreen
+import ru.kuraev.feature_audio.presentation.screen.ListAudioScreen
 import ru.kuraev.feature_main_more.presentation.screen.MainMoreScreen
 import ru.kuraev.feature_main_video.presentation.screen.MainVideoScreen
 
@@ -16,7 +16,7 @@ fun AppNavGraph(
 ) {
     NavHost(navController = navController, startDestination = "library_music") {
         composable("library_music") {
-            MainAudioScreen(modifier = modifier)
+            ListAudioScreen(modifier = modifier, navController)
         }
         composable("library_video") {
             MainVideoScreen(modifier = modifier)

@@ -43,9 +43,10 @@ dependencies {
 
     implementation(project(":core:di"))
     implementation(project(":ui:resources"))
+
+    implementation(project(":feature:more:impl"))
     implementation(project(":feature:list-audio:impl"))
     implementation(project(":feature:list-video:impl"))
-    implementation(project(":feature:more:impl"))
 
     implementation(DI.dagger)
     kapt(DI.kapt)

@@ -1,8 +1,6 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-
-    kotlin("kapt")
 }
 
 android {
@@ -36,7 +34,6 @@ dependencies {
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appcompat)
 
-    implementation(AndroidX.Compose.ui)
     implementation(AndroidX.Compose.foundation)
     implementation(AndroidX.Compose.Material3.material3)
 }

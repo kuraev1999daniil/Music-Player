@@ -3,15 +3,13 @@ plugins {
     id("org.jetbrains.kotlin.android")
 
     kotlin("kapt")
+
+    `android-config`
 }
 
 android {
-    compileSdk = DefaultConfig.compileSdk
-
     defaultConfig {
         applicationId = DefaultConfig.applicationId
-        minSdk = DefaultConfig.minSdk
-        targetSdk = DefaultConfig.targetSdk
         versionCode = BuildVersion.versionCode
         versionName = BuildVersion.versionName
     }
@@ -22,15 +20,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = AndroidX.Compose.kotlinCompilerExtensionVersion
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = DefaultConfig.jvmVersion
     }
 }
 

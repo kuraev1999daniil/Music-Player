@@ -1,19 +1,15 @@
-package ru.kuraev.music_player.di
+package ru.kuraev.base_dagger.app
 
 import android.content.Context
-import androidx.navigation.NavHostController
 import dagger.BindsInstance
 import dagger.Component
-import ru.kuraev.music_player.di.modules.NavigationModule
 import javax.inject.Singleton
 
+@Component
 @Singleton
-@Component(modules = [NavigationModule::class])
 interface AppComponent {
 
     val context: Context
-
-    val navHostController: NavHostController
 
     @Component.Factory
     interface Factory {

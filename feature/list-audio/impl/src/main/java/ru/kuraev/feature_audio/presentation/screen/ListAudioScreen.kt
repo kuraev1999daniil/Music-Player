@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import ru.kuraev.util_resources.R
 import ru.kuraev.util_resources.backgroundMain
@@ -23,7 +24,7 @@ import ru.kuraev.util_resources.backgroundWhite
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun ListAudioScreen(modifier: Modifier, navController: NavController) {
+fun ListAudioScreen(viewModel: ViewModel, modifier: Modifier, navController: NavController) {
     Scaffold(
         modifier = modifier
             .fillMaxSize(),

@@ -19,12 +19,15 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import ru.kuraev.base_dagger.app.AppComponent
+import ru.kuraev.music_player.presentation.navigation.AppNavGraph
+import ru.kuraev.music_player.presentation.navigation.BottomTabs
 import ru.kuraev.util_resources.JetComposeNavMultiModuleTheme
 import ru.kuraev.util_resources.backgroundMain
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainContent() {
+fun MainContent(appComponent: AppComponent) {
     JetComposeNavMultiModuleTheme {
         val tabs = remember { BottomTabs.values() }
         val navController = rememberNavController()
@@ -34,6 +37,7 @@ fun MainContent() {
             }
         ) { innerPaddingModifier ->
             AppNavGraph(
+                appComponent = appComponent,
                 navController = navController,
                 modifier = Modifier.padding(innerPaddingModifier),
             )

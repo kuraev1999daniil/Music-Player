@@ -1,4 +1,4 @@
-package ru.kuraev.music_player.presentation.main
+package ru.kuraev.music_player.presentation.navigation
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

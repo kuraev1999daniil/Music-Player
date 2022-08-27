@@ -19,6 +19,7 @@ android {
 
 dependencies {
 
+    implementation(project(":core:di"))
     implementation(project(":ui:resources"))
     implementation(project(":feature:list-audio:api"))
 

@@ -1,8 +1,7 @@
 package ru.kuraev.music_player
 
 import android.app.Application
-import android.util.Log
-import ru.kuraev.music_player.di.DaggerAppComponent
+import ru.kuraev.base_dagger.app.DaggerAppComponent
 
 class App : Application() {
 

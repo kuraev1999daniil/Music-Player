@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import ru.kuraev.base_dagger.app.AppComponent
 import ru.kuraev.base_dagger.factory.ViewModelFactory
 import ru.kuraev.music_player.App
-import ru.kuraev.music_player.di.AppComponent
 import javax.inject.Inject
 import kotlin.reflect.KClass
 

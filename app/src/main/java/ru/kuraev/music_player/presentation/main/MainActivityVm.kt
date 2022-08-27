@@ -4,8 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import javax.inject.Inject
 
-class MainActivityVm @Inject constructor(
-    private val navHostController: NavHostController
-): ViewModel() {
+class MainActivityVm @Inject constructor(): ViewModel() {
 
 }

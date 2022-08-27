@@ -21,7 +21,7 @@ class MainActivity : BaseActivity<MainActivityVm>(MainActivityVm::class) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            MainContent()
+            MainContent(appComponent = appComponent)
         }
     }
 }

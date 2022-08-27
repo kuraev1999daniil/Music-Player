@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 
     kotlin("kapt")
@@ -8,12 +8,6 @@ plugins {
 }
 
 android {
-    defaultConfig {
-        applicationId = DefaultConfig.applicationId
-        versionCode = BuildVersion.versionCode
-        versionName = BuildVersion.versionName
-    }
-
     buildFeatures {
         compose = true
     }
@@ -23,28 +17,17 @@ android {
     }
 }
 
-kapt {
-    useBuildCache = true
-    correctErrorTypes = true
-}
-
 dependencies {
 
     implementation(project(":core:di"))
     implementation(project(":ui:resources"))
-
-    implementation(project(":feature:more:impl"))
-    implementation(project(":feature:list-audio:impl"))
-    implementation(project(":feature:list-video:impl"))
+    implementation(project(":feature:list-audio:api"))
 
     implementation(DI.dagger)
     kapt(DI.kapt)
 
-    implementation(AndroidX.coreKtx)
-    implementation(AndroidX.appcompat)
-
+    implementation(AndroidX.Compose.ui)
     implementation(AndroidX.Compose.material)
     implementation(AndroidX.Navigation.compose)
-    implementation(AndroidX.Activity.activityCompose)
     implementation(AndroidX.Compose.Material3.material3)
 }

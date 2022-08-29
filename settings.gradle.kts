@@ -26,3 +26,6 @@ include(":feature:list-video:impl", ":feature:list-video:api")
 include(":feature:more:impl", ":feature:more:api")
 include(":core:di")
 include(":core:feature-api")
+include(":data:music")
+include(":tools:audio-scanner")
+

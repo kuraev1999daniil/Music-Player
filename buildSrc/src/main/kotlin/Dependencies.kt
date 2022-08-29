@@ -5,6 +5,7 @@ object DefaultConfig {
     const val compileSdk = 32
 
     const val jvmVersion = "1.8"
+    const val androidJUnitRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     const val applicationId = "ru.kuraev.music_player"
 }
@@ -69,6 +70,16 @@ object AndroidX {
 
         const val runtimeCompose = "androidx.lifecycle:lifecycle-runtime-compose:$lifecycleRuntimeVersion"
     }
+
+    object Testing {
+        private const val androidXTestVersion = "1.4.0"
+        private const val espressoVersion = "3.4.0"
+
+        const val testRules = "androidx.test:rules:$androidXTestVersion"
+        const val testRunner = "androidx.test:runner:$androidXTestVersion"
+
+        const val espressoCore = "androidx.test.espresso:espresso-core:$espressoVersion"
+    }
 }
 
 object Kotlin {
@@ -79,6 +90,7 @@ object Kotlin {
 
     object Coroutines {
         private const val version = "1.6.4"
+        private const val kotlinCoroutinesVersion = "1.6.21"
 
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"

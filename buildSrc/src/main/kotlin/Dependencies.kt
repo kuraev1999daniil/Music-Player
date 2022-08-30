@@ -80,6 +80,13 @@ object AndroidX {
 
         const val espressoCore = "androidx.test.espresso:espresso-core:$espressoVersion"
     }
+
+    object Room {
+        private const val version = "2.4.3"
+
+        const val runtime = "androidx.room:room-runtime:$version"
+        const val kaptCompiler = "androidx.room:room-compiler:$version"
+    }
 }
 
 object Kotlin {
@@ -90,7 +97,6 @@ object Kotlin {
 
     object Coroutines {
         private const val version = "1.6.4"
-        private const val kotlinCoroutinesVersion = "1.6.21"
 
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"

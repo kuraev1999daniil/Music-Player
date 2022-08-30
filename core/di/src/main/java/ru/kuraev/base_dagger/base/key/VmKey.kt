@@ -1,4 +1,4 @@
-package ru.kuraev.base_dagger.key
+package ru.kuraev.base_dagger.base.key
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

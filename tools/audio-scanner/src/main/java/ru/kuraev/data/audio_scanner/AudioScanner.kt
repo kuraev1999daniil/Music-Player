@@ -5,16 +5,16 @@ import java.io.File
 
 class AudioScanner {
 
-    private val mediaMetadata = AudioMetadata()
+    private val mediaMetadata = AudioRetriever()
 
     private val extensions = listOf("mp3", "wav")
 
     @Suppress("UNCHECKED_CAST")
-    suspend fun getFilesBy(): HashMap<String, List<Audio>> {
+    suspend fun getFilesBy(): HashMap<String, List<AudioMetadata>> {
         /**
          * <String, Audio> -> <path, audio_info>
          * */
-        val songDirectories = hashMapOf<String, MutableList<Audio>>()
+        val songDirectories = hashMapOf<String, MutableList<AudioMetadata>>()
 
         val externalStorage = Environment.getExternalStorageDirectory()
 
@@ -22,13 +22,13 @@ class AudioScanner {
 
         mediaMetadata.close()
 
-        return songDirectories as HashMap<String, List<Audio>>
+        return songDirectories as HashMap<String, List<AudioMetadata>>
     }
 
     private fun checkFile(
         targetFile: File,
         folderPath: String,
-        songDirectories: HashMap<String, MutableList<Audio>>
+        songDirectories: HashMap<String, MutableList<AudioMetadata>>
     ) {
         if (targetFile.isDirectory) {
             targetFile.listFiles()?.forEach {
@@ -40,7 +40,7 @@ class AudioScanner {
                     songDirectories[folderPath] = mutableListOf()
                 }
                 songDirectories[folderPath]?.add(
-                    Audio(
+                    AudioMetadata(
                         title = mediaMetadata.title,
                         duration = mediaMetadata.duration,
                         album = mediaMetadata.album,

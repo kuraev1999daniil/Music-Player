@@ -1,11 +1,13 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-android-extensions")
+
+    kotlin("kapt")
 
     `android-config`
 }
 
 dependencies {
 
+    implementation(AndroidX.Room.runtime)
 }

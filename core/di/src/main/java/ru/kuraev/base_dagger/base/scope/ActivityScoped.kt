@@ -1,4 +1,4 @@
-package ru.kuraev.base_dagger.scope
+package ru.kuraev.base_dagger.base.scope
 
 import javax.inject.Scope
 

@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import ru.kuraev.base_dagger.factory.ViewModelFactory
-import ru.kuraev.base_dagger.key.VmKey
-import ru.kuraev.base_dagger.scope.ActivityScoped
+import ru.kuraev.base_dagger.base.factory.ViewModelFactory
+import ru.kuraev.base_dagger.base.key.VmKey
+import ru.kuraev.base_dagger.base.scope.ActivityScoped
 import ru.kuraev.music_player.presentation.main.MainActivityVm
 
 @Module

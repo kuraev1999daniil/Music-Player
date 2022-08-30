@@ -6,7 +6,7 @@ import androidx.core.view.WindowCompat
 import ru.kuraev.music_player.presentation.base.BaseActivity
 import ru.kuraev.music_player.presentation.main.di.DaggerMainComponent
 
-class MainActivity : BaseActivity<MainActivityVm>(MainActivityVm::class) {
+class  MainActivity : BaseActivity<MainActivityVm>(MainActivityVm::class) {
 
     override fun buildDagger() {
         DaggerMainComponent.builder()

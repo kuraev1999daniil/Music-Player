@@ -1,4 +1,4 @@
-package ru.kuraev.base_dagger.factory
+package ru.kuraev.base_dagger.base.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

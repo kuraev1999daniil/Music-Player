@@ -1,72 +1,60 @@
 package ru.kuraev.data.audio_scanner
 
-import android.media.MediaMetadataRetriever
-import java.io.File
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-class AudioMetadata {
+@Parcelize
+data class AudioMetadata(
+    val title: String?,
+    val duration: Long?,
+    val album: String?,
+    val artist: String?,
+    val author: String?,
+    val date: String?,
+    val bitrate: Long?,
+    val albumartist: String?,
+    val composer: String?,
+    val compilation: String?,
+    val embeddedPicture: ByteArray?,
+    val extension: String,
+): Parcelable {
 
-    private val audioRetriever = MediaMetadataRetriever()
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
 
-    fun setDataSource(targetFile: File): Boolean {
-        try {
-            audioRetriever.apply {
-                this.setDataSource(targetFile.absolutePath)
-            }
+        other as AudioMetadata
 
-            if (!isAudio) {
-                return false
-            }
+        if (title != other.title) return false
+        if (duration != other.duration) return false
+        if (album != other.album) return false
+        if (artist != other.artist) return false
+        if (author != other.author) return false
+        if (date != other.date) return false
+        if (bitrate != other.bitrate) return false
+        if (albumartist != other.albumartist) return false
+        if (composer != other.composer) return false
+        if (compilation != other.compilation) return false
+        if (embeddedPicture != null) {
+            if (other.embeddedPicture == null) return false
+            if (!embeddedPicture.contentEquals(other.embeddedPicture)) return false
+        } else if (other.embeddedPicture != null) return false
 
-            return true
-        } catch (e: RuntimeException) {
-            return false
-        }
+        return true
     }
 
-    val title: String?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_TITLE)
-
-    val duration: Long?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_DURATION)?.toLong()
-
-    val album: String?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_ALBUM)
-
-    val artist: String?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_ARTIST)
-
-    val author: String?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_AUTHOR)
-
-    val date: String?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_DATE)
-
-    val bitrate: Long?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_BITRATE)?.toLong()
-
-    val albumartist: String?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_ALBUMARTIST)
-
-    val composer: String?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_COMPOSER)
-
-    val compilation: String?
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_COMPILATION)
-
-    val embeddedPicture: ByteArray?
-        get() = audioRetriever.embeddedPicture
-
-    private fun decodeDataBy(metadataKey: Int): String?
-            = audioRetriever.extractMetadata(metadataKey)
-
-    private val isAudio: Boolean
-        get() = decodeDataBy(MediaMetadataRetriever.METADATA_KEY_HAS_AUDIO) == "yes"
-
-    fun release() {
-        audioRetriever.release()
-    }
-
-    fun close() {
-        audioRetriever.close()
+    override fun hashCode(): Int {
+        var result = title?.hashCode() ?: 0
+        result = 31 * result + (duration?.hashCode() ?: 0)
+        result = 31 * result + (album?.hashCode() ?: 0)
+        result = 31 * result + (artist?.hashCode() ?: 0)
+        result = 31 * result + (author?.hashCode() ?: 0)
+        result = 31 * result + (date?.hashCode() ?: 0)
+        result = 31 * result + (bitrate?.hashCode() ?: 0)
+        result = 31 * result + (albumartist?.hashCode() ?: 0)
+        result = 31 * result + (composer?.hashCode() ?: 0)
+        result = 31 * result + (compilation?.hashCode() ?: 0)
+        result = 31 * result + (embeddedPicture?.contentHashCode() ?: 0)
+        return result
     }
 }

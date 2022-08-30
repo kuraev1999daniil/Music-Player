@@ -1,4 +1,4 @@
-package ru.kuraev.base_dagger.view_model
+package ru.kuraev.base_dagger.base.view_model
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel

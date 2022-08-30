@@ -26,6 +26,9 @@ dependencies {
     implementation(DI.dagger)
     kapt(DI.kapt)
 
+    implementation(Kotlin.Coroutines.core)
+    implementation(Kotlin.Coroutines.android)
+
     implementation(AndroidX.Compose.ui)
     implementation(AndroidX.Compose.material)
     implementation(AndroidX.Navigation.compose)

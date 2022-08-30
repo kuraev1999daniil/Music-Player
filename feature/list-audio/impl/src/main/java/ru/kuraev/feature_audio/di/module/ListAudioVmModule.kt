@@ -7,9 +7,9 @@ import ru.kuraev.feature_audio.di.ListAudioScope
 import ru.kuraev.feature_audio.presentation.screen.ListAudioVm
 
 @Module
-interface ListAudioModule {
+interface ListAudioVmModule {
 
     @Binds
     @ListAudioScope
-    fun getListAudioVm(viewModel: ListAudioVm): ViewModel
+    fun bindListAudioVm(viewModel: ListAudioVm): ViewModel
 }

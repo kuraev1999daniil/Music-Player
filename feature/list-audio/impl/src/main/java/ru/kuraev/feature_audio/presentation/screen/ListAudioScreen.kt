@@ -24,11 +24,11 @@ import ru.kuraev.util_resources.backgroundWhite
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun ListAudioScreen(viewModel: ViewModel, modifier: Modifier, navController: NavController) {
+fun ListAudioScreen(viewModel: ListAudioVm, modifier: Modifier, navController: NavController) {
     Scaffold(
         modifier = modifier
             .fillMaxSize(),
-        topBar = { TopBar() }
+        topBar = { TopBar(viewModel) }
     ) { innerPaddingModifier ->
         Box(modifier = Modifier
             .padding(innerPaddingModifier)
@@ -39,7 +39,7 @@ fun ListAudioScreen(viewModel: ViewModel, modifier: Modifier, navController: Nav
 }
 
 @Composable
-fun TopBar() {
+fun TopBar(viewModel: ListAudioVm) {
     TopAppBar(
         elevation = 0.dp,
         modifier = Modifier.statusBarsPadding(),
@@ -68,7 +68,7 @@ fun TopBar() {
                     colorFilter = ColorFilter.tint(backgroundWhite)
                 )
             }
-            IconButton(onClick = {  }) {
+            IconButton(onClick = { viewModel.getAllAudioUseCase() }) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_search),
                     contentDescription = null,

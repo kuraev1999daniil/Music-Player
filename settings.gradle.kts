@@ -1,5 +1,11 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":data:entities")
+
+
+include(":data:database")
+
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -26,6 +32,7 @@ include(":feature:list-video:impl", ":feature:list-video:api")
 include(":feature:more:impl", ":feature:more:api")
 include(":core:di")
 include(":core:feature-api")
-include(":data:music")
+include(":data:audio")
 include(":tools:audio-scanner")
+
 

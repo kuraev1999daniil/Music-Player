@@ -9,6 +9,7 @@ plugins {
 
 dependencies {
 
+    api(project(":data:cache"))
     api(project(":data:audio"))
     api(project(":data:database"))
 

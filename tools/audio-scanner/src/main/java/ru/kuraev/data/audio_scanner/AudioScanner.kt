@@ -10,7 +10,7 @@ class AudioScanner {
     private val extensions = listOf("mp3", "wav")
 
     @Suppress("UNCHECKED_CAST")
-    suspend fun getFilesBy(): HashMap<String, List<AudioMetadata>> {
+    fun getAudioStorage(): HashMap<String, List<AudioMetadata>> {
         /**
          * <String, Audio> -> <path, audio_info>
          * */

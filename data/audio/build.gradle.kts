@@ -12,6 +12,10 @@ dependencies {
 
     api(project(":tools:audio-scanner"))
 
+    implementation(project(":data:cache"))
+    implementation(project(":data:entities"))
+    implementation(project(":data:database"))
+
     implementation(Kotlin.Coroutines.core)
     implementation(Kotlin.Coroutines.android)
 

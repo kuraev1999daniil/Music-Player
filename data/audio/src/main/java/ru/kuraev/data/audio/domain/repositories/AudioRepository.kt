@@ -1,8 +1,9 @@
 package ru.kuraev.data.audio.domain.repositories
 
+import kotlinx.coroutines.flow.Flow
 import ru.kuraev.data.audio.domain.models.Audio
 
 interface AudioRepository {
 
-    suspend fun scanAndSaveAudioData(): List<Audio>
+    fun scanAudioStorage(): Flow<List<Audio>>
 }

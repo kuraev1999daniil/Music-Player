@@ -24,7 +24,7 @@ class AudioScannerTest {
 
     @Test
     fun caseWhereExtensionReceiverFilesIsChecked(): Unit = runTest {
-        audioScanner.getFilesBy().forEach {
+        audioScanner.getAudioStorage().forEach {
             it.value.forEach { audio ->
                 assert(listOf("mp3", "wav").contains(audio.extension))
             }

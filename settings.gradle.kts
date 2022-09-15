@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":data:cache")
+
+
 include(":data:entities")
 
 

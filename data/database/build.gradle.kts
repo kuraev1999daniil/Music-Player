@@ -11,6 +11,7 @@ dependencies {
 
     implementation(project(":data:entities"))
 
+    implementation(AndroidX.Room.ktx)
     implementation(AndroidX.Room.runtime)
     kapt(AndroidX.Room.kaptCompiler)
 }

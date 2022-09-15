@@ -1,39 +1,62 @@
 package ru.kuraev.data.audio.data.repositories
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import ru.kuraev.data.audio.data.mapper.AudioMapper
 import ru.kuraev.data.audio.domain.models.Audio
 import ru.kuraev.data.audio.domain.repositories.AudioRepository
 import ru.kuraev.data.audio_scanner.AudioScanner
+import ru.kuraev.data.cache.Cache
+import ru.kuraev.data.cache.CacheType
+import ru.kuraev.data.dao.AudioDao
+import ru.kuraev.data.dao.FileDao
+import ru.kuraev.data.entities.AudioEntity
+import ru.kuraev.data.entities.FileEntity
+import java.io.File
+import java.util.*
 import javax.inject.Inject
 
 class AudioRepositoryImpl @Inject constructor(
-    private val audioScanner: AudioScanner
+    private val scanner: AudioScanner,
+    private val audioDao: AudioDao,
+    private val fileDao: FileDao,
+    private val cache: Cache,
+    private val mapper: AudioMapper,
 ) : AudioRepository {
 
-    override suspend fun scanAndSaveAudioData(): List<Audio> = withContext(Dispatchers.IO) {
-        val allAudios = mutableListOf<Audio>()
+    override fun scanAudioStorage(): Flow<List<Audio>> = flow {
 
-        audioScanner.getFilesBy().forEach {
-            it.value.forEach { audio ->
-                allAudios.add(
-                    Audio(
-                        title = audio.title,
-                        duration = audio.duration,
-                        album = audio.album,
-                        artist = audio.artist,
-                        author = audio.author,
-                        date = audio.date,
-                        bitrate = audio.bitrate,
-                        albumartist = audio.albumartist,
-                        composer = audio.composer,
-                        compilation = audio.compilation,
-                        extension = audio.extension,
-                    )
+        audioDao.deleteAll()
+        fileDao.deleteAll()
+
+        val audio = scanner.getAudioStorage()
+        val albumImages = hashMapOf<String, UUID?>()
+        val audioEntities = mutableListOf<AudioEntity>()
+        audio.forEach { byDirectory ->
+            byDirectory.value.forEach { audio ->
+                val album = audio.album
+                if (album != null && !albumImages.containsKey(audio.album)) {
+                    val embeddedPicture = audio.embeddedPicture
+                    albumImages[album] = if (embeddedPicture != null) {
+                        val imageFile = cache.saveFileBy(embeddedPicture, CacheType.IMAGE)
+                        val fileEntity = FileEntity(
+                            path = imageFile.absolutePath,
+                            extension = audio.extension,
+                        )
+                        fileDao.insert(fileEntity)
+                        fileEntity.id
+                    } else {
+                        null
+                    }
+                }
+                audioEntities.add(
+                    mapper.convertFrom(audio, File(byDirectory.key), albumImages[album])
                 )
             }
         }
 
-        allAudios
+        audioDao.insert(audioEntities)
+
+        emit(audioDao.getAllAudio().map { mapper.convertFrom(it) })
     }
 }

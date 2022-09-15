@@ -5,18 +5,18 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class AudioMetadata(
+    val date: String?,
     val title: String?,
-    val duration: Long?,
     val album: String?,
+    val bitrate: Long?,
+    val duration: Long?,
     val artist: String?,
     val author: String?,
-    val date: String?,
-    val bitrate: Long?,
-    val albumartist: String?,
     val composer: String?,
+    val extension: String,
+    val albumartist: String?,
     val compilation: String?,
     val embeddedPicture: ByteArray?,
-    val extension: String,
 ): Parcelable {
 
     override fun equals(other: Any?): Boolean {

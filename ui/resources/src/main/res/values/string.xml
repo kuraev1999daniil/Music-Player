@@ -6,4 +6,6 @@
     <string name="tab_library_music">Music</string>
     <string name="tab_library_video">Video</string>
     <string name="tab_more">More</string>
+
+    <string name="unknown">Неизвестно</string>
 </resources>
